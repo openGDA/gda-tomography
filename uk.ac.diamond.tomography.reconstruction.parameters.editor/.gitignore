@@ -3,10 +3,10 @@
 /@dot.log
 /bin
 /build.xml
-/javaCompiler...args
+/javaCompiler...args 
 /src/corba/
 /temp.folder
 /test-reports
 /test-scratch
-
+*.pyc
 # Ignores that are specific to this Eclipse project
