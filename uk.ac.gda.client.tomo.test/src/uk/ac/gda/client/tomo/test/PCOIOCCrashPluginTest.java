@@ -83,7 +83,7 @@ public class PCOIOCCrashPluginTest extends UITestCaseSWT {
 		ui.click(new MenuItemLocator("Window/Show View/Tomography Alignment"));
 
 		//Part which fails the area detector
-		takeFlatAndDark(ui, streamButtons);
+		//takeFlatAndDark(ui, streamButtons);
 		
 		//
 		ui.click(streamButtons[0]);
@@ -119,7 +119,7 @@ public class PCOIOCCrashPluginTest extends UITestCaseSWT {
 		
 		PluginTestHelpers.delay(5000);
 		
-		takeFlatAndDark(ui, streamButtons);
+		//takeFlatAndDark(ui, streamButtons);
 		
 		PluginTestHelpers.delay(5000);
 
