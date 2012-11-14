@@ -18,7 +18,7 @@ import com.windowtester.runtime.swt.locator.TextLocator;
 import com.windowtester.runtime.swt.locator.eclipse.ViewLocator;
 import com.windowtester.runtime.swt.locator.eclipse.WorkbenchLocator;
 
-public class PCOIOCCrashPluginTest extends UITestCaseSWT {
+public class PCOIOCCrash2PluginTest extends UITestCaseSWT {
 
 	/*
 	 * @see junit.framework.TestCase#setUp()
@@ -37,8 +37,7 @@ public class PCOIOCCrashPluginTest extends UITestCaseSWT {
 	 */
 	public void testPCOIOCCrashPlugin() throws Exception {
 		IUIContext ui = getUI();
-		
-//		PluginTestHelpers.delay(10000);
+
 		ui.click(new MenuItemLocator("Window/Open Perspective/Other..."));
 		ui.wait(new ShellShowingCondition("Open Perspective"));
 		ui.click(new TableItemLocator("Tomo"));
@@ -50,79 +49,40 @@ public class PCOIOCCrashPluginTest extends UITestCaseSWT {
 
 		PluginTestHelpers.delay(5000);
 		ui.click(new SWTWidgetLocator(ToolItem.class, "Reset Detector"));
-
 		PluginTestHelpers.delay(5000);
 		IWidgetLocator[] textBoxes = ui.findAll(new TextLocator());
 		ui.click(2, textBoxes[0], WT.SHIFT);
 		ui.keyClick(WT.DEL);
 		PluginTestHelpers.delay(1000);
-
+		
 		ui.enterText("0.5");
 		ui.keyClick(WT.CR);
-		IWidgetLocator[] streamButtons = ui.findAll(new ButtonLocator("Stream"));
-		IWidgetLocator[] singleButtons = ui.findAll(new ButtonLocator("Single"));
 
-		ui.click(streamButtons[0]);
-		PluginTestHelpers.delay(5000);
+		for (int i = 0; i < 1000; i++) {
+			System.out.println("Take "+i);
+			IWidgetLocator[] streamButtons = ui.findAll(new ButtonLocator("Stream"));
+			IWidgetLocator[] singleButtons = ui.findAll(new ButtonLocator("Single"));
 
-		ui.click(singleButtons[0]);
-		PluginTestHelpers.delay(5000);
+			ui.click(streamButtons[0]);
+			PluginTestHelpers.delay(200000);
 
-		ui.click(streamButtons[0]);
-		PluginTestHelpers.delay(5000);
+			ui.click(singleButtons[0]);
+			PluginTestHelpers.delay(5000);
 
-		//
-		ui.click(new MenuItemLocator("Window/Show View/Tomography Configuration"));
-		//
+			ui.click(streamButtons[0]);
+			PluginTestHelpers.delay(5000);
 
-		PluginTestHelpers.delay(3000);
-		ui.click(new ButtonLocator("Delete All Configurations", new ViewLocator(
-				"uk.ac.gda.client.tomo.configuration.view")));
-		PluginTestHelpers.delay(2000);
-		
-		ui.click(new MenuItemLocator("Window/Show View/Tomography Alignment"));
-
-		//Part which fails the area detector
-		//takeFlatAndDark(ui, streamButtons);
-		
-		//
-		ui.click(streamButtons[0]);
-		PluginTestHelpers.delay(5000);
-
-		ui.click(new ButtonLocator("1", new ViewLocator("uk.ac.gda.client.tomo.alignment.view")));
-
-		ui.click(new ButtonLocator("2", new ViewLocator("uk.ac.gda.client.tomo.alignment.view")));
-		//
-		ui.click(2, textBoxes[2], WT.SHIFT);
-		ui.keyClick(WT.DEL);
-		PluginTestHelpers.delay(5000);
-		//
-		ui.enterText("new tests");
-		ui.keyClick(WT.CR);
-		ui.click(new ButtonLocator("Save Alignment", new ViewLocator("uk.ac.gda.client.tomo.alignment.view")));
-		ui.click(new MenuItemLocator("Window/Show View/Tomography Configuration"));
-		ui.click(new TableItemLocator("::", new ViewLocator("uk.ac.gda.client.tomo.configuration.view")));
-
-		ui.click(1, new ColumnLocator(1, new TableItemLocator("::", new ViewLocator(
-				"uk.ac.gda.client.tomo.configuration.view"))));
-		
-		PluginTestHelpers.delay(2000);
-		
-		ui.click(new ButtonLocator("Start Tomo Runs", new ViewLocator("uk.ac.gda.client.tomo.configuration.view")));
-		PluginTestHelpers.delay(60000);
-		ui.click(new ButtonLocator("Stop Tomo Runs", new ViewLocator("uk.ac.gda.client.tomo.configuration.view")));
-		
-		ui.click(new MenuItemLocator("Window/Show View/Tomography Alignment"));
-
-		
-		ui.click(streamButtons[0]);
-		
-		PluginTestHelpers.delay(5000);
-		
-		//takeFlatAndDark(ui, streamButtons);
-		
-		PluginTestHelpers.delay(5000);
-
+			ui.click(new ButtonLocator("1", new ViewLocator("uk.ac.gda.client.tomo.alignment.view")));
+			PluginTestHelpers.delay(2000);
+			ui.click(new ButtonLocator("2", new ViewLocator("uk.ac.gda.client.tomo.alignment.view")));
+			PluginTestHelpers.delay(2000);
+			
+			ui.click(new ButtonLocator("4", new ViewLocator("uk.ac.gda.client.tomo.alignment.view")));
+			PluginTestHelpers.delay(2000);
+			ui.click(new ButtonLocator("0.5", new ViewLocator("uk.ac.gda.client.tomo.alignment.view")));
+			//
+			PluginTestHelpers.delay(10000);
+		}
 		ui.wait(new ShellDisposedCondition("Beamline i12 - Tel. +44 1235 778375 - GDA - 8.26.0"));
 	}
 
