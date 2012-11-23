@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-Activator: com.windowtester.recorder.SwingRecorderPlugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Export-Package: abbot,abbot.editor,abbot.editor.actions,abbot.editor.e
+ ditors,abbot.editor.recorder,abbot.editor.widgets,abbot.finder,abbot.
+ finder.matchers,abbot.i18n,abbot.script,abbot.script.parsers,com.wind
+ owtester.recorder,com.windowtester.recorder.event,com.windowtester.re
+ corder.event.meta,com.windowtester.recorder.event.user,com.windowtest
+ er.swing.event.recorder,com.windowtester.swing.recorder,example,gnu.r
+ egexp,junit.extensions.abbot,org.jdom,org.jdom.adapters,org.jdom.filt
+ er,org.jdom.input,org.jdom.output,org.jdom.transform,org.jdom.xpath
+Bundle-Version: 6.0.0.r37x201207141347
+Eclipse-LazyStart: true
+Bundle-Name: %pluginName
+Bundle-ClassPath: swingRecorder.jar,abbot/lib/bsh.jar,abbot/lib/gnu-re
+ gexp.jar,abbot/lib/jdom.jar
+Bundle-ManifestVersion: 2
+Bundle-Vendor: %providerName
+Bundle-SymbolicName: com.windowtester.swing.recorder;singleton:=true
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,org.ecli
+ pse.ui;visibility:=reexport,com.windowtester.runtime,com.windowtester
+ .swing.runtime
+
